@@ -16,7 +16,7 @@ app.use(clerkMiddleware()) // add auth object under the req => req.auth
 
 app.use("/api/inngest", serve({client:inngest, functions:functions}))
 
-app.get("/api/health", (req, res) =>{
+app.get("/api/health", (req, res) => {
     res.status(200).json({message:"Success"});
 });
 
