@@ -1,5 +1,5 @@
 import { Inngest } from "inngest";
-import { connectDB } from "./db.js";
+import { connectDB  } from "./db.js";
 import { User} from "../models/user.model.js"
 
 export const inngest = new Inngest({ id: "shopshopday-mobile" });
@@ -10,15 +10,15 @@ const syncUser = inngest.createFunction(
     async({event}) => {
         await connectDB();
 
-        const {id, email_addresses, first_name, last_name, image_url}= event.data
+        const { id, email_addresses, first_name, last_name, image_url } = event.data;
         const newUser = {
-            clerkId: id,
-            email: email_addressesp[0]?.email_addresses,
-            name: `${first_name || ""} ${last_name || ""}` || "User",
-            imageUrl: image_url,
-            addresses: [],
-            wishlist: [],
-        }
+        clerkId: id,
+        email: email_addresses[0]?.email_address,
+        name: `${first_name || ""} ${last_name || ""}` || "User",
+        imageUrl: image_url,
+        addresses: [],
+        wishlist: [],
+        };
 
         await User.create(newUser);
     }
